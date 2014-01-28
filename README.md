@@ -3,6 +3,10 @@ Python Constant Time Comparison
 
 This is a constant time comparison written in C for Python 2.7.x
 
+Install
+=======
+pip install constant_time_compare
+
 Use
 ====
 ```python
