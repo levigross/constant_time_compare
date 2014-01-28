@@ -15,4 +15,6 @@ print compare('foo', 'foo')
 
 Running Tests
 =============
+```bash
 python test/tests.py
+```
