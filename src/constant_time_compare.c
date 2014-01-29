@@ -1,7 +1,7 @@
 #include <Python.h>
 
 static PyObject *secure_compare(PyObject *self, PyObject *args);
-static PyObject *constant_type_compare(unsigned char sentinel, unsigned char check_byte);
+static PyObject *constant_byte_compare(unsigned char sentinel, unsigned char check_byte);
 
 static PyMethodDef ConstantTimeCompareMethods[] = {
     {"compare", secure_compare, METH_VARARGS, "Compares a string in a constant time"},
@@ -53,10 +53,10 @@ static PyObject *secure_compare(PyObject *self, PyObject *args)
         sentinel |= *left++ ^ *right++;
     }
 
-    return constant_type_compare(sentinel, 0);
+    return constant_byte_compare(sentinel, 0);
 }
 
-static PyObject *constant_type_compare(volatile unsigned char sentinel, volatile unsigned char check_byte)
+static PyObject *constant_byte_compare(volatile unsigned char sentinel, volatile unsigned char check_byte)
 {
     volatile unsigned char z = ~(sentinel ^ check_byte);
     z &= z >> 4;
