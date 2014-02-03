@@ -15,6 +15,7 @@ static PyObject *secure_compare(PyObject *self, PyObject *args)
     volatile const unsigned char *left;
     volatile const unsigned char *right;
     Py_ssize_t string_size;
+    int i; /* for use in loops */
 
     /* How many arguments were provided to the function */
     if (PyTuple_Size(args) != 2)
@@ -48,7 +49,7 @@ static PyObject *secure_compare(PyObject *self, PyObject *args)
     volatile unsigned char sentinel = 0;
     string_size = PyString_Size(temp_string_one);
 
-    for(int i = 0; i < string_size; i++)
+    for(i = 0; i < string_size; i++)
     {
         sentinel |= *left++ ^ *right++;
     }
