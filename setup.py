@@ -4,7 +4,7 @@ ctc = Extension('constant_time_compare',
                 sources=['src/constant_time_compare.c'], language='c')
 
 setup(name='constant_time_compare',
-      version='1.2.1',
+      version='1.3',
       description='This package includes a secure constant time comparison function written in C',
       author='Levi Gross',
       author_email='yriv@yrivtebff.pbz'.decode('rot13'),

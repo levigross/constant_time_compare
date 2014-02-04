@@ -12,9 +12,11 @@ static PyObject *secure_compare(PyObject *self, PyObject *args)
 {
     PyObject *temp_string_one;
     PyObject *temp_string_two;
+    Py_ssize_t string_size;
     volatile const unsigned char *left;
     volatile const unsigned char *right;
-    Py_ssize_t string_size;
+    volatile unsigned char sentinel = 0;
+
     int i; /* for use in loops */
 
     /* How many arguments were provided to the function */
@@ -46,7 +48,6 @@ static PyObject *secure_compare(PyObject *self, PyObject *args)
     
     left = (const volatile unsigned char *) PyString_AsString(temp_string_one);
     right = (const volatile unsigned char *) PyString_AsString(temp_string_two);
-    volatile unsigned char sentinel = 0;
     string_size = PyString_Size(temp_string_one);
 
     for(i = 0; i < string_size; i++)
